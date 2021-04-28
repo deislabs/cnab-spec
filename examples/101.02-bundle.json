@@ -61,11 +61,17 @@
       "size": 1337
     }
   ],
+  "labels": {
+    "app": "helloworld"
+  },
   "name": "helloworld",
   "outputs": {
     "clientCert": {
       "definition": "x509Certificate",
-      "path": "/cnab/app/outputs/clientCert"
+      "path": "/cnab/app/outputs/clientCert",
+      "labels": {
+        "format": "PEM"
+      }
     },
     "hostName": {
       "applyTo": [

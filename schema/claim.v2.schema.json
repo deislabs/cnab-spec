@@ -1,0 +1,68 @@
+{
+  "$id": "https://cnab.io/v2/claim.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "additionalProperties": false,
+    "action": {
+      "description": "the name of the action. One of the built-ins (install, uninstall, upgrade) or a custom action.",
+      "type": "string"
+    },
+    "bundle": {
+      "$ref": "https://cnab.io/v1/bundle.schema.json",
+      "description": "The bundle descriptor"
+    },
+    "bundleReference": {
+      "description": "A canonical reference to the bundle used in the last action",
+      "type": "string"
+    },
+    "created": {
+      "description": "The date created, as an ISO-8601 Extended Format date string, as specified in the ECMAScript standard",
+      "type": "string"
+    },
+    "custom": {
+      "$comment": "reserved for custom extensions"
+    },
+    "id": {
+      "description": "the ID (a ULID)",
+      "type": "string"
+    },
+    "installation": {
+      "description": "the name of the installation",
+      "type": "string"
+    },
+    "labels": {
+      "description": "Labels are a set of key/value pairs of type string that MAY be used for querying.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "namespace": {
+      "description": "The namespace of the installation",
+      "type": "string"
+    },
+    "parameters": {
+      "description": "key/value pairs of parameter name to parameter value.",
+      "type": "object"
+    },
+    "revision": {
+      "description": "the revision ID (ideally a ULID)",
+      "type": "string"
+    },
+    "schemaVersion": {
+      "description": "The version of the CNAB Installation State specification",
+      "type": "string"
+    }
+  },
+  "required": [
+    "action",
+    "bundle",
+    "created",
+    "id",
+    "installation",
+    "revision",
+    "schemaVersion"
+  ],
+  "title": "CNAB Claims json schema",
+  "type": "object"
+}

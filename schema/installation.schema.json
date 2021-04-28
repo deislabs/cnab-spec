@@ -1,0 +1,49 @@
+{
+  "$id": "https://cnab.io/v1/installation.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "additionalProperties": false,
+    "bundleRepository": {
+      "description": "The bundle repository associated with the installation",
+      "type": "string"
+    },
+    "bundleVersion": {
+      "description": "The version of the bundle associated with the installation"
+    },
+    "created": {
+      "description": "The date created, as an ISO-8601 Extended Format date string, as specified in the ECMAScript standard",
+      "type": "string"
+    },
+    "custom": {
+      "$comment": "reserved for custom extensions"
+    },
+    "labels": {
+      "description": "Labels are a set of key/value pairs of type string that MAY be used for querying.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "name": {
+      "description": "The installation name",
+      "type": "string"
+    },
+    "namespace": {
+      "description": "The namespace of the installation",
+      "type": "string"
+    },
+    "schemaVersion": {
+      "description": "The version of the CNAB Installation State specification",
+      "type": "string"
+    }
+  },
+  "required": [
+    "bundleRepository",
+    "bundleVersion",
+    "created",
+    "name",
+    "schemaVersion"
+  ],
+  "title": "CNAB Installation json schema",
+  "type": "object"
+}

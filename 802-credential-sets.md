@@ -5,7 +5,10 @@ weight: 802
 
 # Credential Sets
 
-This is a non-normative section that describes how credentials can be passed into an invocation image. This strategy is implemented by `duffle`.
+This is a non-normative section that describes how credentials can be passed into an invocation image. This strategy is implemented by [Duffle] and [Porter].
+
+[Duffle]: https://duffle.sh
+[Porter]: https://porter.sh
 
 ## Credential Mapping
 
@@ -38,25 +41,41 @@ The names on each credential are unique within the bundle:
 
 That name can be used to reference the credential from tooling. Consequently, tooling may choose to construct a map from an external value to the credential name.
 
-Duffle, for example, maps local credentials to bundle credentials by _credential sets_. Here is an example:
+Porter, for example, maps local credentials to bundle credentials by _credential sets_. Here is an example:
 
-```yaml
-name: test_credentials
-created: 2020-01-20T06:00:00.00000-06:00
-modified: 2020-01-28T12:30:00.11193-06:00
-credentials:
-- name: kubeconfig
-  source:
-    path: $HOME/.kube/config
-- name: image_token
-  source:
-    value: "1234aaaaa"
-- name: hostkey
-  source:
-    env: HOSTKEY
+```json
+{
+   "name": "test_credentials",
+   "namespace": "test",
+   "created": "2020-01-20T12:00:00.000Z",
+   "modified": "2020-01-28T18:30:00.111Z",
+   "labels": {
+     "env": "dev"
+   },
+   "credentials": [
+      {
+         "name": "kubeconfig",
+         "source": {
+            "path": "$HOME/.kube/config"
+         }
+      },
+      {
+         "name": "image_token",
+         "source": {
+            "value": "1234aaaaa"
+         }
+      },
+      {
+         "name": "hostkey",
+         "source": {
+            "env": "HOSTKEY"
+         }
+      }
+   ]
+}
 ```
 
-This credential set tells the client application (`duffle`) to map CNAB bundle credential sections to certain local values:
+This credential set tells the client application (`porter`) to map CNAB bundle credential sections to certain local values:
 
 - When a bundle requests `kubeconfig`, a file will be loaded from the local file system and injected into the container at `/home/.kube/config`
 - When a bundle requests `image_token`, the literal value `1234aaaaa` will be loaded into the environment variable `AZ_IMAGE_TOKEN`
@@ -65,6 +84,20 @@ This credential set tells the client application (`duffle`) to map CNAB bundle c
 Similar tooling could choose to load the values by name from a database, vault, or file.
 
 The created and modified timestamps are in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format.
+
+### Namespaces
+
+Credential Sets MAY be scoped to a namespace.
+The combination of namespace and name must be unique.
+When a namespace is unset or empty, the document is considered to be global.
+Documents in a namespace MAY reference a global document, but global documents MUST NOT reference namespaced documents and namespaced documents MUST NOT reference documents in a different namespace.
+
+### Labels
+
+Credential Sets MAY define labels which can be used by storage providers to query for the document.
+For example, retrieving credential sets that were generated from a given bundle.
+
+How labels are used for querying is out-of-scope of this spec and is up to the implementing storage provider.
 
 ## Credential Injection
 

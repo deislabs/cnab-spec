@@ -19,5 +19,6 @@
       "contentDigest":"sha256:ccc..."
     }
   },
+  "schemaVersion": "1.0.0-DRAFT+abc123",
   "status": "succeeded"
 }

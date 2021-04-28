@@ -1,0 +1,15 @@
+{
+    "bundleRepository": "hub.example.com/technosophos/hellohelm",
+    "bundleVersion": "0.1.2",
+    "created": "2018-08-30T20:39:55.549002887-06:00",
+    "custom": {},
+    "labels": {
+      "env": "dev",
+      "owner": "javier",
+      "cnab.io/app": "hello-helm",
+      "cnab.io/appVersion": "v1.0.0"
+    },
+    "name": "hello-world",
+    "namespace": "demo",
+    "schemaVersion": "1.0.0-DRAFT+abc123"
+  }

@@ -103,5 +103,6 @@
   "parameters": {
     "backend_port": 81
   },
-  "revision": "01CP6XM0KVB9V1BQDZ9NK8VP29"
+  "revision": "01CP6XM0KVB9V1BQDZ9NK8VP29",
+  "schemaVersion": "1.0.0-DRAFT+abc123"
 }

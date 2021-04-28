@@ -128,6 +128,13 @@
         "description": {
           "$ref": "http://json-schema.org/draft-07/schema#/properties/description"
         },
+        "labels": {
+          "description": "Labels are a set of key/value pairs of type string that MAY be used for querying.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
         "path": {
           "description": "The path inside of the invocation image where output will be written",
           "pattern": "^/cnab/app/outputs/.+$",
@@ -253,6 +260,13 @@
         "type": "string"
       },
       "type": "array"
+    },
+    "labels": {
+      "description": "Labels are a set of key/value pairs of type string that MAY be used for querying.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
     },
     "license": {
       "description": "The SPDX license code or proprietary license name for this bundle",

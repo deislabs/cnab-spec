@@ -51,6 +51,9 @@
       "imageType": "docker"
     }
   ],
+  "labels": {
+    "app": "helloworld"
+  },
   "maintainers": [
     {
       "email": "matt.butcher@microsoft.com",
@@ -62,7 +65,10 @@
   "outputs": {
     "clientCert": {
       "definition": "x509Certificate",
-      "path": "/cnab/app/outputs/clientCert"
+      "path": "/cnab/app/outputs/clientCert",
+      "labels": {
+        "format": "PEM"
+      }
     },
     "hostName": {
       "applyTo": [

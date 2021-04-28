@@ -114,6 +114,7 @@ The `manifests` list MUST be filled in the following order:
   ],
   "annotations": {
     "io.cnab.keywords": "[\"helloworld\",\"cnab\",\"tutorial\"]",
+    "io.cnab.labels": "{\"cnab.io/app\":\"helloworld\",\"cnab.io/appVersion\":\"1.2.3\"}",
     "io.cnab.runtime_version": "v1.0.0",
     "org.opencontainers.artifactType": "application/vnd.cnab.manifest.v1",
     "org.opencontainers.image.authors": "[{\"name\":\"Jane Doe\",\"email\":\"jane.doe@example.com\",\"url\":\"https://example.com\"}]",
